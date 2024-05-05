@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTER</title>
+    <style>
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://t4.ftcdn.net/jpg/05/96/90/29/360_F_596902955_4zzO8Y9KIPdeSxJcbz0nWbCY6moXTaOg.jpg');
+            background-size: cover;
+            filter: blur(2px);
+            z-index: -1;
+        }
+
+        .profile-container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 30px auto;
+            border: 3px solid #000000;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        select {
+            width: 100%;
+            /* Make the select element fill the entire width of its container */
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #dddfe2;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            /* Add margin at the bottom for spacing */
+        }
+
+        label {
+            color: #e6e9ff;
+            margin-bottom: 10px;
+            
+        
+        }
+
+        h2 {
+            border-bottom: 2px solid #dddfe2;
+            padding-bottom: 5px;
+            color: #ffffff;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        button {
+            background-color: #eceaff;
+            color: #000000;
+            border: none;
+            border-radius: 7px;
+            padding: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button.logout-button {
+            background-color: #faf9ff;
+        }
+
+        button:hover {
+            background-color: #ef5281;
+        }
+
+
+        form {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            gap: 25px;
+
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: auto;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #f7faff;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        /* Logout button styles */
+        .logout-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 30px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="title">SAINT AMATIEL EDUCATION SYSTEM</div>
+
+    <div class="profile-container">
+        <!-- Logout button added -->
+        <button class="logout-button" onclick="logout()">Back</button>
+
+        <h2>PERSONAL INFORMATION</h2>
+        <form id="profile-form">
+
+            <label for="school">Select the nearest Saint Amatiel Branch:</label>
+            <select id="school" required>
+
+                <option value="" disabled selected>Choose</option>
+                <option value="Male">College of Saint Amatiel - Malabon City</option>
+                <option value="Female">College of Saint Amatiel - Malolos </option>
+                <option value="Prefer not to Say">College of Saint Amatiel - Balagtas </option>
+                <option value="Other">College of Saint Amatiel - Caloocan </option>
+                <option value="Other">College of Saint Amatiel - Marilao </option>
+            </select>
+
+            <label for="Number">Student Number:</label>
+            <input type="number" id="Number" placeholder="Enter your Student Number" required>
+
+            <label for="name"> Full Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="gender">Gender:</label>
+            <div class="gender-container">
+
+                <input type="radio" id="male" name="gender" value="Male"><label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female"><label for="female">Female</label>
+                <input type="radio" id="none" name="gender" value="Prefer not to Say"><label for="none">Prefer not
+                    to Say</label>
+            </div>
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" placeholder="Enter your Phone Number" required>
+
+            <label for="email">Email:</label>
+            <input type="text" id="Email" placeholder="Enter your Email" required>
+
+            <label for="school">Preferred course for 3 year diploma courses only:</label>
+            <select id="school" required>
+             
+                <option value="" disabled selected>Choose</option>
+                <option value="Male">DIPLOMA IN HOTEL AND RESTAURANT TECHNOLOGY</option>
+                <option value="Female">DIPLOMA IN INFORMATION TECHNOLOGY </option>
+              
+            </select>
+
+            <label for="school">Preferred course For 4 year bachelor courses only:</label>
+            <select id="school" required>
+             
+                <option value="" disabled selected>Choose</option>
+                <option value="Male">BACHELOR OF TECHNICAL VOCATIONAL TEACHERS EDUCATION</option>
+                <option value="Female">BACHELOR OF SCIENCE IN MANAGEMENT ACCOUNTING </option>
+                <option value="Female">BACHELOR OF SCIENCE IN ENTREPRENEURSHIP </option>
+              
+            </select>
+        </form>
+        </form>
+
+        <button class="submit-button" onclick="submit()">submit</button>
+
+        <script>
+            // Logout function
+            function logout() {
+                // Redirect to welcome.html
+                window.location.href = 'index.html';
+            }
+
+            // Retrieve the username from the query parameter
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const username = urlParams.get('username');
+
+            // Display a welcome message with the username
+            document.getElementById("username").innerText = username;
+
+            function submit() {
+                // Get user input values
+                var name = document.getElementById("name").value;
+                var birthdate = document.getElementById("birthdate").value;
+                var selectedGender = document.querySelector('input[name="gender"]:checked');
+                var email = document.getElementById("email").value;
+
+             
+
+                // Update basic information
+                document.getElementById("athlete-name").innerText = name;
+                document.getElementById("athlete-birthdate").innerText = birthdate;
+                document.getElementById("athlete-gender").innerText = selectedGender ? selectedGender.value : "";
+                document.getElementById("athlete-Location").innerText = Location;
+
+                // Clear the form
+                document.getElementById("profile-form").reset();
+            }
+        </script>
+    </div>
+</body>
+
+</html>
